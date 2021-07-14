@@ -2,16 +2,19 @@ class Kong < Formula
   desc "Open source Microservices and API Gateway"
   homepage "https://docs.konghq.com"
 
-  KONG_OPENRESTY_VERSION = "1.19.3.1"
-  KONG_VERSION = "2.2.0"
+  KONG_OPENRESTY_VERSION = "1.17.8.2"
 
   stable do
-    url "https://download.konghq.com/gateway-src/kong-#{KONG_VERSION}.tar.gz"
+    url "https://bintray.com/kong/kong-src/download_file?file_path=kong-2.2.0.tar.gz"
     sha256 "bf3006018117e66df3bb6b303a80439b1c2528dc36d2edeb6c032e7e60c5736e"
   end
 
+  #devel do
+  #  url "https://github.com/Kong/kong.git", :tag => "2.1.0-rc.1"
+  #end
+
   head do
-    url "https://github.com/Kong/kong.git", :branch => "master"
+    url "https://github.com/Kong/kong.git", :branch => "next"
   end
 
   depends_on "libyaml"
@@ -34,18 +37,3 @@ class Kong < Formula
     bin.install "bin/kong"
   end
 end
-
-# patch Kong default `prefix` to `/usr/local/opt/kong` as `/usr/local/`
-# not writable by non root user on OSX
-__END__
-diff --git a/kong/templates/kong_defaults.lua b/kong/templates/kong_defaults.lua
-index e38b475..7a74a2f 100644
---- a/kong/templates/kong_defaults.lua
-+++ b/kong/templates/kong_defaults.lua
-@@ -1,5 +1,5 @@
- return [[
--prefix = /usr/local/kong/
-+prefix = /usr/local/opt/kong/
- log_level = notice
- proxy_access_log = logs/access.log
- proxy_error_log = logs/error.log
