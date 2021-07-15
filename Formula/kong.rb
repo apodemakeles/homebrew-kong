@@ -2,19 +2,16 @@ class Kong < Formula
   desc "Open source Microservices and API Gateway"
   homepage "https://docs.konghq.com"
 
-  KONG_OPENRESTY_VERSION = "1.17.8.2"
+  KONG_OPENRESTY_VERSION = "1.19.3.1"
+  KONG_VERSION = "2.5.0"
 
   stable do
-    url "https://download.konghq.com/gateway-src/kong-2.2.0.tar.gz"
-    sha256 "bf3006018117e66df3bb6b303a80439b1c2528dc36d2edeb6c032e7e60c5736e"
+    url "https://download.konghq.com/gateway-src/kong-#{KONG_VERSION}.tar.gz"
+    sha256 "b7d6c00143e69998a91ea603edc9996f79032a1af9c3801b1903076f2ba77708"
   end
 
-  #devel do
-  #  url "https://github.com/Kong/kong.git", :tag => "2.1.0-rc.1"
-  #end
-
   head do
-    url "https://github.com/Kong/kong.git", :branch => "next"
+    url "https://github.com/Kong/kong.git", :branch => "master"
   end
 
   depends_on "libyaml"
