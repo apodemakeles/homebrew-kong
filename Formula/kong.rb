@@ -18,12 +18,12 @@ class Kong < Formula
   end
 
   depends_on "libyaml"
-  depends_on "kong/kong/openresty@#{KONG_OPENRESTY_VERSION}"
+  depends_on "apodemakeles/kong/openresty@#{KONG_OPENRESTY_VERSION}"
 
   patch :DATA
 
   def install
-    openresty_prefix = Formula["kong/kong/openresty@#{KONG_OPENRESTY_VERSION}"].prefix
+    openresty_prefix = Formula["apodemakeles/kong/openresty@#{KONG_OPENRESTY_VERSION}"].prefix
 
     luarocks_prefix = openresty_prefix + "luarocks"
     openssl_prefix = openresty_prefix + "openssl"
